@@ -1,0 +1,72 @@
+<!-- Курс Modern Javascript на сайте FructCode.com -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread operator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-6">
+	 		<h1>Список дел на сегодня</h1>
+	 		<div id="todolist"></div>
+	 	</div>
+	    <div class="col-3"></div>
+    </div>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script type="text/babel">
+	
+		var today = [
+			'Запланировать полет на Марс',
+			'Поездка в Амстердам',
+			'Посетить музей поездов',
+			'Записаться на курсы игры на ханге',
+			'Посетить необитаемый остров',
+			'Найти клад',
+			'Начать отращивать бороду',
+			'Попробовать фрукт, который никогда не пробовал',
+			'Купить костюм ковбоя и поехать в Лас Вегас'
+		];
+
+		// Массив со списком дел
+		var todolist = ['Начать изучать Modern Javascript на сайте FructCode.com', ...today];
+		
+		var list = document.getElementById('todolist');
+
+		for(let i = 0; i < todolist.length; i++) {
+			let item = document.createElement('span');
+			item.appendChild(document.createTextNode(todolist[i]));
+
+			// В переменной isChecked хранится стататус дела - выполнено или нет
+			let isChecked = 0;
+
+			// Помечаем в списке первый элемент как выполнен (добавляем класс checked)
+			if(i === 0) {
+				isChecked = 1;
+				item.classList.add("checked");
+			}
+
+			// Назначается событие при клике на дело
+			item.onclick = function() {
+				// Логика дела - сделано или не сделано	
+				if(!isChecked) {
+					item.classList.add("checked");
+					isChecked = 1;
+				} else {
+					item.classList.remove("checked");
+					isChecked = 0;
+				}
+			}
+
+			list.appendChild(item);
+		}
+
+	</script>
+    
+</body>
+</html>
