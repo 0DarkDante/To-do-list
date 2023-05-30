@@ -1,5 +1,5 @@
-Список дел написанный с помощью JS
+To-do list written with JS
 *
 *
 *
-Пока в елементарном виде
+While in elementary form
